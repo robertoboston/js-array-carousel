@@ -40,16 +40,43 @@ const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
     //verifico l'elemento attivo (itemActive)
+    const lastActiveItem= items[itemActive]
+    const lastCircleActive= items[itemActive]
+
     //incremento il suo valore di 1
+    itemActive=itemActive +1
+    const activeItem = items[itemActive]
+    const circleItem = circles[itemActive]
+    
+    
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
+    activeItem.classList.add('active')
+    lastActiveItem.classList.remove('active')
+
     //stessa cosa per i cerchi
+    circleItem.classList.add('active')
+    lastCircleActive.classList.remove('active')
+
 });
 
 prev.addEventListener('click', function(){
     //verifico l'elemento attivo (itemActive)
+    const lastActiveItem= items[itemActive]
+    const lastCircleActive= items[itemActive]
+
+
     //decremento il suo valore di 1
+    itemActive=itemActive -1
+    const activeItem = items[itemActive]
+    const circleItem = circles[itemActive]
+
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
+    activeItem.classList.add('active')
+    lastActiveItem.classList.remove('active')
+
     //stessa cosa per i cerchi
+    circleItem.classList.add('active')
+    lastCircleActive.classList.remove('active')
 })
 
 
