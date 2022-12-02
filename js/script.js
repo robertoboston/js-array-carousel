@@ -40,43 +40,59 @@ const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
     //verifico l'elemento attivo (itemActive)
-    const lastActiveItem= items[itemActive]
-    const lastCircleActive= items[itemActive]
-
     //incremento il suo valore di 1
-    itemActive=itemActive +1
-    const activeItem = items[itemActive]
-    const circleItem = circles[itemActive]
-    
-    
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
-    activeItem.classList.add('active')
-    lastActiveItem.classList.remove('active')
-
     //stessa cosa per i cerchi
-    circleItem.classList.add('active')
-    lastCircleActive.classList.remove('active')
+
+    // SE immagine non è l'ultima
+    if(itemActive < items.length -1){
+
+        // RIMUOVO LA CLASSE ACTIVE NEGLI ELEMENTI ATTUALMENTE VISIBILI
+        items[itemActive].classList.remove('active')
+        circles[itemActive].classList.remove('active')
+
+        // ESEGUO INCREMENTO
+        itemActive++;
+
+        // AGGIUNGERE LA CLASSE ACTIVE AL NUOVO ELEMENTO (QUELLO SUCCESSIVO)
+        items[itemActive].classList.add('active')
+        circles[itemActive].classList.add('active')
+
+        prev.classList.remove('hidden')
+        if(itemActive === items.length -1){
+            next.classList.add('hidden')
+        }
+        
+    
+    }
+
+  
 
 });
 
 prev.addEventListener('click', function(){
-    //verifico l'elemento attivo (itemActive)
-    const lastActiveItem= items[itemActive]
-    const lastCircleActive= items[itemActive]
+    //  SE immagine attiva non è la prima
+    if(itemActive > 0){
+
+        // RIMUOVO LA CLASSE ACTIVE NEGLI ELEMENTI ATTUALMENTE ATTIVI
+        items[itemActive].classList.remove('active')
+        circles[itemActive].classList.remove('active')
+
+        // ESEGUO IL DECREMENTO
+        itemActive--;
+
+        // AGGIUNGERE LA CLASSE ACTIVE AL NUOVO ELEMENTO (QUELLO SUCCESSIVO)
+        items[itemActive].classList.add('active')
+        circles[itemActive].classList.add('active')
+
+        next.classList.remove('hidden')
+        if(itemActive == 0){
+            prev.classList.add('hidden')
+        }
+
+    }
 
 
-    //decremento il suo valore di 1
-    itemActive=itemActive -1
-    const activeItem = items[itemActive]
-    const circleItem = circles[itemActive]
-
-    //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
-    activeItem.classList.add('active')
-    lastActiveItem.classList.remove('active')
-
-    //stessa cosa per i cerchi
-    circleItem.classList.add('active')
-    lastCircleActive.classList.remove('active')
 })
 
 
